@@ -70,14 +70,14 @@ module Lita
         end
 
         def rtm_start
-          response_data = call_api("rtm.start")
+          # TODO: just for check if it works
+          response_data = call_api("rtm.connect")
 
           TeamData.new(
-            SlackIM.from_data_array(response_data["ims"]),
+            [],
             SlackUser.from_data(response_data["self"]),
-            SlackUser.from_data_array(response_data["users"]),
-            SlackChannel.from_data_array(response_data["channels"]) +
-              SlackChannel.from_data_array(response_data["groups"]),
+            [],
+            [],
             response_data["url"],
           )
         end
